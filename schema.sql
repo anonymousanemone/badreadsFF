@@ -19,15 +19,6 @@ CREATE TABLE Fanfic
     PRIMARY KEY (fanfic_id)
 )
 
-CREATE TABLE Writes
-(
-    user_id INT,
-    fanfic_id INT,
-    PRIMARY KEY (user_id, fanfic_id),
-    FOREIGN KEY (user_id) REFERENCES User,
-    FOREIGN KEY (fanfic_id) REFERENCES Fanfic
-)
-
 CREATE TABLE Fandom
 (
     fandom_name TEXT,
@@ -41,6 +32,38 @@ CREATE TABLE Fictional_Character
     char_name TEXT,
     gender TEXT,
     PRIMARY KEY (char_name)
+)
+
+CREATE TABLE Comment
+{
+    comment_id TEXT,
+    content TEXT,
+    posted_date DATE,
+    PRIMARY KEY (comment_id)
+}
+
+CREATE TABLE Rating
+{
+    rating_id INT,
+    rate_value INT,
+    rate_date DATE,
+    PRIMARY KEY (rating_id)
+}
+
+CREATE TABLE Tag
+{
+    tag_name TEXT,
+    tag_descript TEXT,
+    PRIMARY KEY (tag_name)
+}
+
+CREATE TABLE Writes
+(
+    user_id INT,
+    fanfic_id INT,
+    PRIMARY KEY (user_id, fanfic_id),
+    FOREIGN KEY (user_id) REFERENCES User,
+    FOREIGN KEY (fanfic_id) REFERENCES Fanfic
 )
 
 CREATE TABLE Belongs_To
@@ -70,3 +93,43 @@ CREATE TABLE Relationship
     FOREIGN KEY (first_char) REFERENCES Fictional_Character,
     FOREIGN KEY (second_char) REFERENCES Fictional_Character
 )
+
+CREATE TABLE Rates
+{
+    rating_id INT,
+    user_id INT,
+    fanfic_id INT,
+    PRIMARY KEY (rating_id, user_id, fanfic_id),
+    FOREIGN KEY (rating_id) REFERENCES Rating,
+    FOREIGN KEY (user_id) REFERENCES User,
+    FOREIGN KEY (fanfic_id) REFERENCES Fanfic
+}
+
+CREATE TABLE Comments_on
+{
+    comment_id TEXT,
+    user_id INT,
+    fanfic_id INT,
+    PRIMARY KEY (comment_id, user_id, fanfic_id),
+    FOREIGN KEY (comment_id) REFERENCES Comments,
+    FOREIGN KEY (user_id) REFERENCES User,
+    FOREIGN KEY (fanfic_id) REFERENCES Fanfic
+}
+
+CREATE TABLE Tagged_with
+{
+    fanfic_id INT,
+    tag_name TEXT,
+    PRIMARY KEY (fanfic_id, tag_name),
+    FOREIGN KEY (fanfic_id) REFERENCES Fanfic,
+    FOREIGN KEY (tag_name) REFERENCES Tag,
+}
+
+CREATE TABLE Parent_of
+{
+    child_id INT,
+    parent_id INT,
+    PRIMARY KEY (child_id, parent_id),
+    FOREIGN KEY (child_id) REFERENCES Comment
+    FOREIGN KEY (parent_id) REFERENCES Comment
+}
