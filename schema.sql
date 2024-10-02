@@ -99,7 +99,7 @@ CREATE TABLE Relationship
 CREATE TABLE Rates
 {
     rating_id INT,
-    user_id INT,
+    user_id INT NOT NULL,
     fanfic_id INT,
     PRIMARY KEY (rating_id, fanfic_id),  -- key constraint
     FOREIGN KEY (rating_id) REFERENCES Rating,
@@ -110,7 +110,7 @@ CREATE TABLE Rates
 CREATE TABLE Comments_On
 {
     comment_id TEXT,
-    user_id INT,
+    user_id INT NOT NULL,
     fanfic_id INT,
     PRIMARY KEY (comment_id, fanfic_id), --key constraint
     FOREIGN KEY (comment_id) REFERENCES Comments,
@@ -130,7 +130,7 @@ CREATE TABLE Tagged_With
 
 CREATE TABLE Parent_Of
 {
-    child_id INT,
+    child_id INT NOT NULL,
     parent_id INT,
     PRIMARY KEY (child_id),  -- key constraint
     FOREIGN KEY (child_id) REFERENCES Comment
