@@ -130,8 +130,8 @@ CREATE TABLE Tagged_With
 
 CREATE TABLE Parent_Of
 {
-    child_id INT NOT NULL,
-    parent_id INT,
+    child_id INT,
+    parent_id INT NOT NULL,
     PRIMARY KEY (child_id),  -- key constraint
     FOREIGN KEY (child_id) REFERENCES Comment
     FOREIGN KEY (parent_id) REFERENCES Comment
