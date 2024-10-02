@@ -57,6 +57,7 @@ CREATE TABLE Tag
     PRIMARY KEY (tag_name)
 }
 
+--NOTE: We can't model the paticipation constraint yet in SQL.
 CREATE TABLE Writes
 (
     user_id INT,
@@ -66,6 +67,7 @@ CREATE TABLE Writes
     FOREIGN KEY (fanfic_id) REFERENCES Fanfic
 )
 
+--NOTE: We can't model the paticipation constraint yet in SQL.
 CREATE TABLE Belongs_To
 (
     fanfic_id INT,
@@ -77,9 +79,9 @@ CREATE TABLE Belongs_To
 
 CREATE TABLE Part_Of
 (
-    fandom_name TEXT,
+    fandom_name TEXT NOT NULL,
     char_name TEXT,
-    PRIMARY KEY (char_name),
+    PRIMARY KEY (char_name), --key constraint
     FOREIGN KEY (fandom_name) REFERENCES Fandom,
     FOREIGN KEY (char_name) REFERENCES Fictional_Character
 )
@@ -99,24 +101,25 @@ CREATE TABLE Rates
     rating_id INT,
     user_id INT,
     fanfic_id INT,
-    PRIMARY KEY (rating_id, user_id, fanfic_id),
+    PRIMARY KEY (rating_id, fanfic_id),  -- key constraint
     FOREIGN KEY (rating_id) REFERENCES Rating,
     FOREIGN KEY (user_id) REFERENCES User,
     FOREIGN KEY (fanfic_id) REFERENCES Fanfic
 }
 
-CREATE TABLE Comments_on
+CREATE TABLE Comments_On
 {
     comment_id TEXT,
     user_id INT,
     fanfic_id INT,
-    PRIMARY KEY (comment_id, user_id, fanfic_id),
+    PRIMARY KEY (comment_id, fanfic_id), --key constraint
     FOREIGN KEY (comment_id) REFERENCES Comments,
     FOREIGN KEY (user_id) REFERENCES User,
     FOREIGN KEY (fanfic_id) REFERENCES Fanfic
 }
 
-CREATE TABLE Tagged_with
+--NOTE: We can't model the paticipation constraint yet in SQL.
+CREATE TABLE Tagged_With
 {
     fanfic_id INT,
     tag_name TEXT,
@@ -125,11 +128,11 @@ CREATE TABLE Tagged_with
     FOREIGN KEY (tag_name) REFERENCES Tag,
 }
 
-CREATE TABLE Parent_of
+CREATE TABLE Parent_Of
 {
     child_id INT,
     parent_id INT,
-    PRIMARY KEY (child_id, parent_id),
+    PRIMARY KEY (child_id),  -- key constraint
     FOREIGN KEY (child_id) REFERENCES Comment
     FOREIGN KEY (parent_id) REFERENCES Comment
 }
