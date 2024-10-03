@@ -25,13 +25,6 @@ CREATE TABLE Fandom
     PRIMARY KEY (fandom_name)
 )
 
-CREATE TABLE Fictional_Character
-(
-    char_name TEXT,
-    gender TEXT,
-    PRIMARY KEY (char_name)
-)
-
 CREATE TABLE Comment
 {
     comment_id TEXT,
@@ -75,25 +68,27 @@ CREATE TABLE Belongs_To
     FOREIGN KEY (fandom_name) REFERENCES Fandom
 )
 
-CREATE TABLE Part_Of
+-- Merged Fictional_Character and Part_Of tables
+CREATE TABLE Character_Part_Of
 (
     fandom_name TEXT NOT NULL,
     char_name TEXT,
+    gender TEXT,
     PRIMARY KEY (char_name), --key constraint
     FOREIGN KEY (fandom_name) REFERENCES Fandom,
-    FOREIGN KEY (char_name) REFERENCES Fictional_Character
 )
 
-CREATE TABLE Relationship
+CREATE TABLE In_Relationship
 (
     first_char TEXT,
     second_char TEXT,
     relation_type TEXT,
     PRIMARY KEY (first_char, second_char),
-    FOREIGN KEY (first_char) REFERENCES Fictional_Character,
-    FOREIGN KEY (second_char) REFERENCES Fictional_Character
+    FOREIGN KEY (first_char) REFERENCES Character_Part_Of,
+    FOREIGN KEY (second_char) REFERENCES Character_Part_Of
 )
 
+--NOTE: We can't model the paticipation constraint yet in SQL.
 CREATE TABLE Rates
 {
     rating_id INT,
@@ -105,6 +100,7 @@ CREATE TABLE Rates
     FOREIGN KEY (fanfic_id) REFERENCES Fanfic
 }
 
+--NOTE: We can't model the paticipation constraint yet in SQL.
 CREATE TABLE Comments_On
 {
     comment_id TEXT,
