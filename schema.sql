@@ -33,14 +33,6 @@ CREATE TABLE Comment
     PRIMARY KEY (comment_id)
 }
 
-CREATE TABLE Rating
-{
-    rating_id INT,
-    rate_value INT,
-    rate_date DATE,
-    PRIMARY KEY (rating_id)
-}
-
 CREATE TABLE Tag
 {
     tag_name TEXT,
@@ -88,14 +80,13 @@ CREATE TABLE In_Relationship
     FOREIGN KEY (second_char) REFERENCES Character_Part_Of
 )
 
---NOTE: We can't model the paticipation constraint yet in SQL.
 CREATE TABLE Rates
 {
-    rating_id INT,
     user_id INT NOT NULL,
     fanfic_id INT,
-    PRIMARY KEY (rating_id, fanfic_id),  -- key constraint
-    FOREIGN KEY (rating_id) REFERENCES Rating,
+    rate_date DATE,
+    rate_value INT,
+    PRIMARY KEY (fanfic_id),  -- key constraint
     FOREIGN KEY (user_id) REFERENCES User,
     FOREIGN KEY (fanfic_id) REFERENCES Fanfic
 }
