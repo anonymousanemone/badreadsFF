@@ -1,7 +1,7 @@
 CREATE TABLE User 
 (
     user_id INT,
-    username CHAR(24),
+    username TEXT,
     join_date DATE,
     PRIMARY KEY (user_id)
 )
@@ -9,11 +9,12 @@ CREATE TABLE User
 CREATE TABLE Fanfic
 (
     fanfic_id INT,
-    words INT,
     title TEXT,
+    words INT,
     complete BOOLEAN,
     create_date DATE,
     update_date DATE,
+    CHECK (create_date <= update_date),
     PRIMARY KEY (fanfic_id)
 )
 
@@ -86,7 +87,8 @@ CREATE TABLE Rates
     fanfic_id INT,
     rate_date DATE,
     rate_value INT,
-    PRIMARY KEY (fanfic_id),  -- key constraint
+    CHECK (rate_value>1 and rate_value<10)
+    PRIMARY KEY (user_id, fanfic_id),
     FOREIGN KEY (user_id) REFERENCES User,
     FOREIGN KEY (fanfic_id) REFERENCES Fanfic
 }
