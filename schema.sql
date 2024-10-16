@@ -87,7 +87,7 @@ CREATE TABLE Rates
     fanfic_id INT,
     rate_date DATE,
     rate_value INT,
-    CHECK (rate_value>1 and rate_value<10)
+    CHECK (rate_value=>1 and rate_value<=10)
     PRIMARY KEY (user_id, fanfic_id),
     FOREIGN KEY (user_id) REFERENCES User,
     FOREIGN KEY (fanfic_id) REFERENCES Fanfic
