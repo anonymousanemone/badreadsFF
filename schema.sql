@@ -1,6 +1,6 @@
 CREATE TABLE User 
 (
-    user_id INT,
+    user_id INT unique,
     username TEXT,
     join_date DATE,
     PRIMARY KEY (user_id)
