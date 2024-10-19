@@ -2,16 +2,16 @@
 
 INSERT INTO User (user_id, username, join_date)
 VALUES 
-(1, 'Deandeanmoose', '2022-11-08'),
-(2, 'NoNameWriter', '2023-04-22'),
-(3, 'Dancing_with_delusions', '2021-08-15'),
-(4, 'ObsidianPen', '2023-02-03'),
-(5, 'ShadyDigress', '2024-05-10'),
-(6, 'inwardtransience', '2023-12-25'),
-(7, 'hedgehodgy', '2024-01-07'),
-(8, 'neighborhood_yogurt', '2022-06-30'),
-(9, 'finallyaniguana', '2021-11-17'),
-(10, 'Flora_Gray', '2023-09-01');
+(1, 'Deandeanmoose', '2012-11-08'),
+(2, 'NoNameWriter', '2013-04-22'),
+(3, 'Dancing_with_delusions', '2011-08-15'),
+(4, 'ObsidianPen', '2013-02-03'),
+(5, 'ShadyDigress', '2014-05-10'),
+(6, 'inwardtransience', '2013-12-25'),
+(7, 'hedgehodgy', '2014-01-07'),
+(8, 'neighborhood_yogurt', '2012-06-30'),
+(9, 'finallyaniguana', '2011-11-17'),
+(10, 'Flora_Gray', '2013-09-01');
 
 INSERT INTO Fanfic (fanfic_id, title, words, complete, create_date, update_date) 
 VALUES 
@@ -44,30 +44,6 @@ VALUES
 ('Miraculous Ladybug', 'TV Show', 'Teenagers Marinette and Adrien transform into the superheroes Ladybug and Cat Noir to protect Paris from supervillains.');
 ('Scream (Movies)', 'Film', 'A horror movie series where a masked killer, known as Ghostface, terrorizes its victims with phone calls and deadly games.'),
 ('The Vampire Diaries (TV)', 'TV Show', 'A supernatural drama centered on the lives of vampires, werewolves, and witches, following the love triangle between Elena, Stefan, and Damon.');
-
-
-INSERT INTO Comment (comment_id, content, posted_date)
-VALUES 
-('001', 'This fanfic is amazing! Can’t wait for the next chapter.', '2023-05-15'),
-('002', 'I love how you wrote the characters, they feel so real.', '2023-06-20'),
-('003', 'This part made me laugh out loud! Keep it up!', '2023-07-05'),
-('004', 'Wow, the plot twist at the end was incredible!', '2023-08-01'),
-('005', 'I’ve been following this for months, and it just keeps getting better.', '2023-09-14'),
-('006', 'When will the next update be? I’m hooked!', '2023-09-29'),
-('007', 'Such a great crossover! Never thought these two universes would mix so well.', '2023-10-10'),
-('008', 'This fanfic is my new favorite. So well-written!', '2023-11-01'),
-('009', 'I stayed up all night reading this. Totally worth it.', '2023-11-17'),
-('010', 'I didn’t expect that ending at all, such a cliffhanger!', '2023-12-03'),
-('011', 'The dialogue in this story is just perfect. Can’t get enough of it!', '2024-01-10'),
-('012', 'I never knew I needed this ship until I read your fic!', '2024-01-20'),
-('013', 'The action scenes were so intense, I was on the edge of my seat!', '2024-01-30'),
-('014', 'Your writing style is so unique, I love how you capture emotions.', '2024-02-12'),
-('015', 'I keep re-reading this chapter, it’s just that good!', '2024-02-28'),
-('016', 'Please update soon! I’m dying to know what happens next!', '2024-03-05'),
-('017', 'You totally nailed the characters’ personalities, amazing job!', '2024-03-15'),
-('018', 'This fanfic deserves way more recognition, seriously underrated.', '2024-03-25'),
-('019', 'I got emotional reading this chapter, so beautifully written.', '2024-04-01'),
-('020', 'I love the humor in this! You’ve made my day brighter.', '2024-04-14');
 
 INSERT INTO Tag (tag_name, tag_descript)
 VALUES
@@ -129,10 +105,8 @@ VALUES
 ('Batman - All Media Types', 'Damiane Wayne (Robin)', 'Male'),
 ('Marvel Cinematic Universe', 'Pepper Potts', 'Female'),
 ('Marvel Cinematic Universe', 'Tony Stark (Iron Man)', 'Female'),
-
 ('Miraculous Ladybug', 'Marinette Dupain-Cheng (Ladybug)', 'Female'),
 ('Scream (Movies)', 'Sidney Prescott', 'Female');
-
 
 INSERT INTO In_Relationship (first_char, second_char, relation_type)
 VALUES
@@ -142,37 +116,6 @@ VALUES
 ('Pepper Potts', 'Tony Stark (Iron Man)', '/'),
 ('Adrien Agreste (Cat Noir)', 'Marinette Dupain-Cheng (Ladybug)', '&'),
 ('Damian Wayne (Robin)', 'Marinette Dupain-Cheng (Ladybug)', '&'),
-
-INSERT INTO Rates (user_id, fanfic_id, rate_date, rate_value)
-VALUES
-(1, 1, '2023-07-01', 8),
-(2, 5, '2024-02-12', 9),
-(3, 7, '2023-03-05', 10),
-(4, 3, '2022-12-10', 7),
-(5, 14, '2023-06-22', 6),
-(6, 12, '2024-01-15', 8),
-(7, 6, '2023-09-18', 7),
-(8, 10, '2023-11-25', 9),
-(9, 17, '2021-11-01', 6),
-(10, 15, '2024-01-11', 8),
-(1, 2, '2024-03-20', 7),
-(2, 4, '2023-05-30', 9),
-(3, 18, '2022-07-10', 8),
-(4, 9, '2022-11-12', 6),
-(5, 16, '2023-12-01', 7);
-
-INSERT INTO Comments_On (comment_id, user_id, fanfic_id)
-VALUES
-('001', 1, 1),  -- User 1 comments on Fanfic 1
-('001', 2, 5),  -- User 2 comments on Fanfic 5
-('001', 3, 7),  -- User 3 comments on Fanfic 7
-('001', 4, 3),  -- User 4 comments on Fanfic 3
-('001', 5, 14), -- User 5 comments on Fanfic 14
-('001', 6, 12), -- User 6 comments on Fanfic 12
-('001', 7, 6),  -- User 7 comments on Fanfic 6
-('001', 8, 10), -- User 8 comments on Fanfic 10
-('001', 9, 17), -- User 9 comments on Fanfic 17
-('001', 10, 15); -- User 10 comments on Fanfic 15
 
 INSERT INTO Tagged_With (fanfic_id, tag_name)
 VALUES
@@ -208,6 +151,32 @@ VALUES
 (15, 'Crossover'),          -- Fanfic 15 tagged with 'Crossover'
 (15, 'One-shot');           -- Fanfic 15 tagged with 'One-shot'
 
+INSERT INTO Rates (user_id, fanfic_id, rate_date, rate_value)
+VALUES 
+(101, 1, '2023-06-20', 8),
+(102, 1, '2024-03-15', 9),
+(103, 8, '2022-11-10', 7),
+(104, 4, '2023-02-01', 6),
+(105, 5, '2022-07-15', 10),
+(106, 6, '2023-09-01', 5),
+(107, 7, '2023-03-01', 10),
+(108, 8, '2022-02-01', 8),
+(109, 9, '2022-10-15', 7),
+(110, 8, '2023-05-30', 9);
+
+INSERT INTO Comment (comment_id, content, posted_date)
+VALUES
+(101, 'Amazing plot twists!', '2023-06-20'),
+(102, 'I love the character development here!', '2024-03-15'),
+(103, 'A touching and emotional journey!', '2022-11-10'),
+(104, 'Interesting, but needs more action!', '2023-02-01'),
+(105, 'Well written and engaging!', '2022-07-15'),
+(106, 'Couldnt stop reading, very immersive!', '2023-09-01'),
+(107, 'This is a masterpiece!', '2023-03-01'),
+(108, 'Great start but lost me halfway!', '2022-02-01'),
+(109, 'Really enjoyed the tension between characters!', '2022-10-15'),
+(110, 'This story is so well-paced and detailed.', '2023-05-30');
+
 INSERT INTO Parent_Of (child_id, parent_id)
 VALUES
 (2, 1),   -- Comment 2 is a reply to Comment 1
@@ -217,3 +186,16 @@ VALUES
 (6, 3),   -- Comment 6 is a reply to Comment 3
 (7, 1),   -- Comment 7 is a reply to Comment 1
 (8, 5);   -- Comment 8 is a reply to Comment 5
+
+INSERT INTO Comments_On (comment_id, user_id, fanfic_id)
+VALUES
+('C101', 10, 1),
+('C102', 1, 1),
+('C103', 8, 3),
+('C104', 7, 4),
+('C105', 6, 5),
+('C106', 5, 6),
+('C107', 4, 7),
+('C108', 3, 8),
+('C109', 2, 9),
+('C110', 1, 10);

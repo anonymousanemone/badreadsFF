@@ -1,7 +1,7 @@
 CREATE TABLE User 
 (
     user_id INT,
-    username TEXT UNIQUE,
+    username varchar(n) UNIQUE,
     join_date DATE,
     PRIMARY KEY (user_id)
 )
@@ -9,7 +9,7 @@ CREATE TABLE User
 CREATE TABLE Fanfic
 (
     fanfic_id INT,
-    title TEXT,
+    title varchar(n),
     words INT,
     complete BOOLEAN,
     create_date DATE,
@@ -20,24 +20,24 @@ CREATE TABLE Fanfic
 
 CREATE TABLE Fandom
 (
-    fandom_name TEXT,
-    fandom_type TEXT,
-    descript TEXT,
+    fandom_name varchar(n),
+    fandom_type varchar(n),
+    descript varchar(n),
     PRIMARY KEY (fandom_name)
 )
 
 CREATE TABLE Comment
 {
-    comment_id TEXT,
-    content TEXT,
+    comment_id varchar(n),
+    content varchar(n),
     posted_date DATE,
     PRIMARY KEY (comment_id)
 }
 
 CREATE TABLE Tag
 {
-    tag_name TEXT,
-    tag_descript TEXT,
+    tag_name varchar(n),
+    tag_descript varchar(n),
     PRIMARY KEY (tag_name)
 }
 
@@ -55,7 +55,7 @@ CREATE TABLE Writes
 CREATE TABLE Belongs_To
 (
     fanfic_id INT,
-    fandom_name TEXT,
+    fandom_name varchar(n),
     PRIMARY KEY (fanfic_id, fandom_name),
     FOREIGN KEY (fanfic_id) REFERENCES Fanfic,
     FOREIGN KEY (fandom_name) REFERENCES Fandom
@@ -64,18 +64,18 @@ CREATE TABLE Belongs_To
 -- Merged Fictional_Character and Part_Of tables
 CREATE TABLE Character_Part_Of
 (
-    fandom_name TEXT NOT NULL,
-    char_name TEXT,
-    gender TEXT,
+    fandom_name varchar(n) NOT NULL,
+    char_name varchar(n),
+    gender varchar(n),
     PRIMARY KEY (char_name), --key constraint
     FOREIGN KEY (fandom_name) REFERENCES Fandom
 )
 
 CREATE TABLE In_Relationship
 (
-    first_char TEXT,
-    second_char TEXT,
-    relation_type TEXT,
+    first_char varchar(n),
+    second_char varchar(n),
+    relation_type varchar(n),
     PRIMARY KEY (first_char, second_char),
     FOREIGN KEY (first_char) REFERENCES Character_Part_Of,
     FOREIGN KEY (second_char) REFERENCES Character_Part_Of,
@@ -97,7 +97,7 @@ CREATE TABLE Rates
 --NOTE: We can't model the paticipation constraint yet in SQL.
 CREATE TABLE Comments_On
 {
-    comment_id TEXT,
+    comment_id INT,
     user_id INT NOT NULL,
     fanfic_id INT,
     PRIMARY KEY (comment_id, fanfic_id), --key constraint
@@ -110,7 +110,7 @@ CREATE TABLE Comments_On
 CREATE TABLE Tagged_With
 {
     fanfic_id INT,
-    tag_name TEXT,
+    tag_name varchar(n),
     PRIMARY KEY (fanfic_id, tag_name),
     FOREIGN KEY (fanfic_id) REFERENCES Fanfic,
     FOREIGN KEY (tag_name) REFERENCES Tag
