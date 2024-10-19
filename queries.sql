@@ -34,8 +34,7 @@ GROUP BY F.title, B.fandom_name;
 */
 WITH TagPopularity AS (
     SELECT B.fandom_name, T.tag_name, COUNT(T.fanfic_id) AS tag_count
-    FROM Tagged_With T
-    JOIN Belongs_To B ON T.fanfic_id = B.fanfic_id
+    FROM Tagged_With T NATURAL JOIN Belongs_To B
     GROUP BY B.fandom_name, T.tag_name
 ),
 MaxTagCounts AS (
