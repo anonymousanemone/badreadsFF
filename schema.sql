@@ -122,5 +122,6 @@ CREATE TABLE Parent_Of
     parent_id INT NOT NULL,
     PRIMARY KEY (child_id),  -- key constraint
     FOREIGN KEY (child_id) REFERENCES Comment,
-    FOREIGN KEY (parent_id) REFERENCES Comment
+    FOREIGN KEY (parent_id) REFERENCES Comment,
+    CHECK(parent_id != child_id)
 );
